@@ -17,7 +17,7 @@ for(let i=1; i<=10; i++){
          let linea=prompt("Indique la linea que le interesa \n Construcción\n Compra Vivienda\n Construcción+Terreno"); //segun la linea va a ser el interes
          let anos=prompt("Lo va a pagar en 10 o 20 años");
          function calcular() {
-            let cuota =  (capital / anos / 12 ) * ((1 + Interes))
+            let cuota =  ((capital / anos / 12 ) * ((1 + Interes)).toFixed(2))
              alert ("Para un prestamo de "+capital+ " a "+ (anos*12)+ " meses y una tasa del 20%, su cuota mensual sera de " + parseFloat(cuota)) ;
             document.write("<h3> La cuota Mensual sera de " +parseFloat(cuota) + "</h3>" )
             }

@@ -1,13 +1,12 @@
 
-
 //Armo la lista de lineas de credito disponibles
 
-const listaLineas = [ "Adquisición Vivienda", "Construcción", "Construcción con Terreno", "Refacción", "Ampliación"];
+const listaLineas = [ "Adquisición Vivienda", "Construcción"];
 console.log(listaLineas);
 
 //Agrego una nueva linea al final (push) porque en orden de prioridad (monto a prestar) es la menos importante
 
-listaLineas.push("Materiales");
+listaLineas.push("Construcción con Terreno");
 console.log(listaLineas);
 
 //elimino la linea adquisición porque voy a generar 2 lineas una para vivienda usada y una para nueva
@@ -20,204 +19,181 @@ listaLineas.unshift("Adquisición Vivienda Nueva","Adquisición Vivienda Usada")
 
 console.log(listaLineas);
 
-for (let i = 0; i < listaLineas.length; i++) {
-    console.log("Linea " + (i+1) + " : " + listaLineas[i]);
-}
-
-//creo 2 lista para mostrar prestamos Hipotecarios con Hipoteca x un lado y prestamos personales por otro
-
-const listaHipotecarios = listaLineas.slice(0,4);
-
-//busco que n° de indice es Refacción para armar la de personales
-console.log( listaLineas.indexOf("Refacción"));//4
-
-const listaPersonales = listaLineas.slice(4,7);
+//tengo que ver como sumar esto en la pagina en la ubicacion que quiero!!
+document.write("<p> Tenemos " + listaLineas.length + " lineas de creditos disponibles para ofrecerte: " + listaLineas.join(", ") +"</p>" );
 
 // Dejo en la consola la lista de lineas y condiciones para luego impactarlas en el HTML y que el cliente pueda saber 
 // y elegir cual le interesa y si califica, para luego ingresar en el calculador y saber cual seria su cuota
 
 const listaCondiciones=[
     {
-        linea: "Adquisición Vivienda Nueva",
-        montoMinimo: 1500000,
-        montoMaximo: 10000000,
+        nombre: "Adquisición Vivienda Nueva",
+        montoMaximo: 10000000,        
         ingresoMinimo: 40000,
-        ingresoMaximo: 3000000,
         edadMinima: 18,
         edadMaxima: 70,
         plazoMinimoMeses: 120,
-        plazoMaximaMeses: 240
+        plazoMaximoMeses: 240,
+        img:"./img/compraviviendanueva.jpg"
     },
     {
-        linea: "Adquisición Vivienda Usada",
-        montoMinimo: 1000000,
+        nombre: "Adquisición Vivienda Usada",
         montoMaximo: 7000000,
         ingresoMinimo: 30000,
-        ingresoMaximo: 3000000,
         edadMinima: 18,
         edadMaxima: 70,
         plazoMinimoMeses: 120,
-        plazoMaximaMeses: 240
+        plazoMaximoMeses: 240,
+        img:"./img/compraviviendausada-min.jpg"
     },
     {
-        linea: "Construcción",
-        montoMinimo: 800000,
+        nombre: "Construcción",
         montoMaximo: 5000000,
         ingresoMinimo: 20000,
-        ingresoMaximo: 3000000,
         edadMinima: 18,
         edadMaxima: 70,
         plazoMinimoMeses: 120,
-        plazoMaximaMeses: 240
+        plazoMaximoMeses: 240,
+        img: "./img/construccion-min.jpg"
     },
     {
-        linea: "Construcción con Terreno",
-        montoMinimo: 1200000,
+        nombre: "Construcción con Terreno",
         montoMaximo: 7500000,
         ingresoMinimo: 35000,
-        ingresoMaximo: 3000000,
         edadMinima: 18,
         edadMaxima: 70,
         plazoMinimoMeses: 120,
-        plazoMaximaMeses: 240
+        plazoMaximoMeses: 240,
+        img: "./img/construccionconterreno-min.jpg"
     },
-        {
-        linea: "Refacción",
-        montoMinimo: 30000,
-        montoMaximo: 100000,
-        ingresoMinimo: 20000,
-        ingresoMaximo: 3000000,
-        edadMinima: 18,
-        edadMaxima: 70,
-        plazoMinimoMeses: 48,
-        plazoMaximaMeses: 96
-    },
-    {
-        linea: "Ampliación",
-        montoMinimo: 100000,
-        montoMaximo: 3000000,
-        ingresoMinimo: 50000,
-        ingresoMaximo: 3000000,
-        edadMinima: 18,
-        edadMaxima: 70,
-        plazoMinimoMeses: 48,
-        plazoMaximaMeses: 120
-    },
-    {
-        linea: "Materiales",
-        montoMinimo: 50000,
-        montoMaximo: 500000,
-        ingresoMinimo: 20000,
-        ingresoMaximo: 3000000,
-        edadMinima: 18,
-        edadMaxima: 70,
-        plazoMinimoMeses: 24,
-        plazoMaximaMeses: 60
-    },
-]
-
-for (const linea of listaCondiciones){
-console.log(linea);
-}
+ ];
 
 
-listaCondiciones.forEach((lineas) =>{
-    console.log("Lineas disponibles " + lineas.linea);
-})
+//pongo en el HTML las lineas que tengo disponibles
 
-//busco si existe alguna linea a menos de 10 años
-
-//le pido ingreso minimo
-
-let plazoDeInteres = listaCondiciones.find((lineas) => lineas.plazoMinimoMeses <=120);
-
-//en HTML la idea es mostrarle a cual puede acceder
-
-console.log(plazoDeInteres);
+//Accedo al DOM a traves del ID
+let lineas = document.createElement("div");
+lineas.className="card textCenter alineaCards";
 
 
-//busco a que lineas puede acceder la persona con su ingreso (menor a 50.000 x ej)
+//ver como sumar la imagen y que no se arruine el formato!!!
 
-//le pido ingreso minimo
+    //Para cada linea del array voy a tener una card
+    for (const linea of listaCondiciones){
+        let card = document.createElement("div");
+        card.innerHTML = `
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="alineaCards  margenCards">
+                            <div class="card card-img-top">
+                                <div class="card-body">
+                                    <p class="card-title tamañoTitulos2">${linea.nombre}</p>
+                                    <img src="${linea.img}" class="card-img-top" alt="${linea.nombre}">
+                                </div>
+                            </div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        lineas.appendChild(card);
+    }
 
-let ingresoMinimo = parseInt(prompt("Ingreso Minimo"));
 
-let lineasCalifica = listaCondiciones.filter((lineas) => lineas.montoMinimo <=ingresoMinimo);
+let insertaLineas=document.getElementById("lineas");
+insertaLineas.appendChild(lineas);
 
-//en HTML la idea es mostrarle a cual puede acceder
-
-console.log(lineasCalifica);
-
-//Genero la info para que el usuario las vea
-
-alert("Tenemos " + listaLineas.length + " lineas de creditos disponibles para ofrecerte: " + listaLineas.join(", "));
-
- document.write("<h2> Tenemos " + listaLineas.length + " lineas de creditos disponibles para ofrecerte: " + listaLineas.join(", ") +"</h3>" );
-
-alert("Estas lineas son con Hipoteca: " + listaHipotecarios);
-alert("Estas lineas son con Pagaré: "+ listaPersonales);
+//le inserto formato al titulo de condiciones y le cambio el texto
+    let titulo=document.getElementById("tituloCondiciones");
+    titulo.innerText="Condiciones de las lineas";
+    tituloCondiciones.className = "textCenter tamañoTitulos margenCards";
 
 
-//Le consultamos que esta buscando para saber si tenemos esa linea
-//armo un array para la tasa que mantiene el orden de la lista de las lineas
-const tasaInteres = [25, 30, 22,26, 40, 46, 50];
 
-let linea=prompt("Que linea te interesa");
-let check = listaLineas.indexOf(linea);
 
-if(check != -1){
-    alert("Tenemos una linea para " + linea + " con una tasa del " + tasaInteres[check] + "% anual que puede servirte");
-}else{
-    alert("Por el momento no contamos con una linea que pueda servirte")
-}
+//tabla para condiciones de cada linea
+
+let lista = document.createElement("div");
+
+//Para cada linea del array voy a tener una box
+    for (const producto of listaCondiciones){
+        let box = document.createElement("div");
+        box.innerHTML = `
+        <div class="container-fluid">
+            <div class="row">
+            <div class="alineaCards">
+            <div class="col-md-12">
+                <div class="card card-body margenCards">
+                    <div class="textCenter">
+                        <span class="card-title tamañoTitulos2 ">${producto.nombre}</span>
+                    </div>
+                    <ul>
+                        <li class="card-text alineaInfo">Edad entre ${producto.edadMinima} y ${producto.edadMaxima}</li>
+                        <li class="card-text alineaInfo">Plazo ${producto.plazoMinimoMeses} & ${producto.plazoMaximoMeses} meses</li>
+                        <li class="card-text alineaInfo">Financiación hasta $ ${producto.montoMaximo}</li>
+                        <li class="card-text alineaInfo">Ingreso minimo $ ${producto.ingresoMinimo}</li>
+                    </ul>
+                    <button>Más info</button>
+                </div>
+            </div>
+            </div>
+            </div>
+        </div>
+        `;
+        lista.appendChild(box);
+    }
+
+
+let insertaLista=document.getElementById("lista");
+insertaLista.appendChild(lista);
+
+lista.className= "alineaCards";
+
+
 
 //pedimos al cliente que ingrese la linea que le interesa y calcule su cuota
 
-function calcular(capital, Interes, anos) {
+let boton = document.getElementById("miBoton");
+boton.addEventListener("click", calcular);
 
-    let cuota = ((capital / anos / 12) * (1 + Interes)).toFixed(2);
-
-    alert("Para un prestamo de " + capital + " a " + (anos * 12) + " meses y una tasa del 20%, su cuota mensual sera de " + cuota);
-
-    document.write("<h4> La cuota Mensual sera de " + cuota + "</h4>");
-
+boton.onmouseover = () =>{
+    boton.className="btn btn-primary";
 }
 
+boton.onmouseout = () => {
+    boton.className="btn btn-dark";
+}
 
-for (let i = 1; i <= 10; i++) {
+let campoIngreso = document.getElementById("ingreso");
+let campoAntiguedad = document.getElementById("antiguedad");
+let campoCapital = document.getElementById("capital");
+let campoPlazo = document.getElementById("plazo");
+//let Interes = 0.2; ver como definirlo para que lo tome
 
-    let IngresoNetoFamiliar = parseInt(prompt("Ingreso Neto Familiar"));
-
-    let AntiguedadLaboral = parseInt(prompt("Antiguedad Laboral"));
-
-    if (IngresoNetoFamiliar < 20000 && AntiguedadLaboral < 3) {
-
-        alert("No califica para esta linea");
-
-        break;
-
+function calcular (capital, Interes, plazo){ 
+    if (campoIngreso.value < 20000 && campoAntiguedad.value < 3) {
+        document.write("<h4> No califica para esta linea </h4>");
+    }else if (campoIngreso.value >= 20000 && campoIngreso.value < 1000000 && campoAntiguedad.value >= 3){
+        let cuota = ((campoCapital.value / campoPlazo.value / 12) * (1 + 0.2)).toFixed(2);
+        document.write("<h4> La cuota Mensual sera de " + cuota + "</h4>");
     }
-
-    else if (IngresoNetoFamiliar >= 20000 && IngresoNetoFamiliar < 1000000 && AntiguedadLaboral >= 3) {
-
-        let capital = prompt("Introduzca el monto del prestamo a solicitar \n Monto minimo 2000000\n Monto máximo 10000000");
-
-        let Interes = 0.2;
-
-        let anos = prompt("Lo va a pagar en 10 o 20 años");
-
-        calcular(capital, Interes, anos);
-
-        continue;
-
-    }
-
     else {
-
-        alert("Comunicate con un representate para revisar tu casa");
-
-        break;
-
+        document.write("Comunicate con un representate para revisar tu caso");
     }
+};
 
+
+//Controla que haya completado datos del formulario (sean numero y no esten vacios)
+
+let formulario      = document.getElementById("formulario");
+formulario.addEventListener("submit", validarFormulario);
+
+function validarFormulario(e){
+    if(isNaN(campoIngreso.value)||(campoIngreso.value=="")||isNaN(campoAntiguedad.value)||(campoAntiguedad.value=="")||isNaN(campoCapital.value)||(campoCapital.value=="")||isNaN(campoPlazo.value)||(campoPlazo.value=="")){
+        e.preventDefault();//Cancelamos el comportamiento del evento y evita que se borren los campos
+        alert("Los datos ingresados son incorrectos");
+    }
 }
+
+
+//A sumar boton me interesa derive en un formulario de carga de datos para contacto

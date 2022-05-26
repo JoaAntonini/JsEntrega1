@@ -1,0 +1,295 @@
+/*--------Definiciones generales para todo el doc----------*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&family=Yeseva+One&display=swap');
+
+
+*{
+	font-family: 'Poppins', sans-serif;
+  margin: 0;
+	padding: 0;
+	line-height: 2rem;
+	box-sizing: border-box;
+  font-size: 1.5rem;
+}
+
+html{
+	font-size: 62.5%;
+}
+
+
+body {
+  background-image: url(../img/fondo-min.jpg);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 100%;
+  overflow-x: hidden; }
+
+
+.textCenter{
+  text-align: center;
+}
+
+
+#lineas .alineaCards{
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content:  center;
+}
+
+
+#lista .alineaCards{
+ position: relative;
+   flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  justify-content:  space-between;
+}
+
+
+.margenCards{
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.tamañoTitulos{
+  font-size: 3rem;
+  text-decoration: underline;
+}
+
+
+.tamañoTitulos2{
+  font-size: 2rem;
+  text-decoration: underline;
+  font-style: bold;
+  text-align: center;
+}
+.lineasItems{position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding: 1rem;
+    cursor: default;
+    border-radius: 1rem;
+    background-color: white;
+    transition: background 0.3s;
+    position: relative;
+    float: center; 
+  }
+
+.botonMas{
+      color: inherit;
+      border: none;
+      font-weight: bold;
+      margin-top: auto;
+      padding: 0.5rem 2rem;
+      border-radius: 0.5rem;
+      background: #809696;
+      transition: background 0.3s; 
+    }
+.botonMas:focus  {
+      outline: none; 
+    }
+
+.alineaInfo{
+      text-align: center;
+      margin: 0rem;
+      padding: 0rem;
+      list-style: outside none none;
+      font-size: 1rem; 
+}
+
+.listaLinea {
+      margin: 0rem;
+      padding: 1rem 1.25rem 2rem;
+      font-size: 1.5rem; 
+}
+.listaLinea:hover {
+      cursor: pointer;
+      font-size: 2rem;
+      transition: all 2s;
+      background-color: rgba(221, 235, 235, 0.9); 
+    }
+
+.card-img-top{
+  width: 60%; 
+}
+
+.card-img-top {
+  border-top-left-radius: calc(0.25rem - 1px);
+  border-top-right-radius: calc(0.25rem - 1px); }
+
+
+
+.footer {
+  background: #06395e;
+  background: linear-gradient(90deg, #06395e 0%, rgba(8, 7, 52, 0.01) 99%);
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 1.5rem;
+  text-align: left;
+  padding: 2rem;
+  overflow: hidden; }
+  @media (max-width: 768px) {
+    .footer {
+      padding: 3rem; } }
+  @media (min-width: 992px) {
+    .footer {
+      font-size: 2.5rem; } }
+  @media (min-width: 1200px) {
+    .footer {
+      font-size: 3rem; } }
+  @media (max-width: 1024px) {
+    .footer {
+      font: bold 1.5rem "Poppins", sans-serif; } }
+  .footer .footerLeft {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    float: left; }
+    @media (max-width: 768px) {
+      .footer .footerLeft {
+        float: none;
+        margin-bottom: 3rem; } }
+    .footer .footerLeft h3, .footer .footerLeft .h3 {
+      color: white;
+      text-decoration: underline; }
+  .footer .footerLinks, .footer .footerIcons {
+    color: white;
+    margin: 0rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+    font-size: 1.2rem; }
+    @media (min-width: 480px) {
+      .footer .footerLinks, .footer .footerIcons {
+        flex-wrap: nowrap;
+        margin: 1rem;
+        font-size: 1.5rem; } }
+    @media (min-width: 992px) {
+      .footer .footerLinks, .footer .footerIcons {
+        flex-wrap: nowrap;
+        margin: 1rem;
+        font-size: 2rem; } }
+    @media (min-width: 1200px) {
+      .footer .footerLinks, .footer .footerIcons {
+        flex-wrap: nowrap;
+        margin: 1rem;
+        font-size: 3rem; } }
+    .footer .footerLinks a, .footer .footerIcons a {
+      display: flex;
+      flex-direction: row;
+      text-decoration: none;
+      color: white; }
+  .footer .footerIcons {
+    margin-top: 2rem;
+    justify-content: space-evenly; }
+    .footer .footerIcons a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 3.5rem;
+      height: 2.5rem;
+      cursor: pointer;
+      background-color: #33383b;
+      border-radius: 0.5rem;
+      font-size: 2rem;
+      color: white;
+      text-align: center;
+      margin-right: 0.3rem;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem; }
+  .footer .footerRight {
+    float: right;
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    @media (max-width: 768px) {
+      .footer .footerRight {
+        float: none;
+        max-width: 3rem;
+        margin: 0rem auto; } }
+    @media (min-width: 768px) {
+      .footer .footerRight .alineacorreo {
+        display: flex;
+        flex-direction: column;
+        align-items: center; } }
+    .footer .footerRight p {
+      display: flex;
+      flex-direction: column;
+      color: white; }
+    @media (max-width: 768px) {
+      .footer .footerRight form {
+        margin-top: 3rem;
+        display: block; } }
+    .footer .footerRight form textarea {
+      display: block;
+      border-radius: 0.3rem;
+      box-sizing: border-box;
+      background-color: #1f2022;
+      box-shadow: 0rem 0.3rem 0rem 0rem rgba(255, 255, 255, 0.1);
+      border: none;
+      resize: none;
+      font: inherit;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #d1d2d2;
+      width: 40rem;
+      padding: 1.5rem;
+      height: 10rem;
+      margin-bottom: 2rem; }
+      @media (max-width: 1024px) {
+        .footer .footerRight form textarea {
+          width: 25rem; } }
+    .footer .footerRight form .correo {
+      display: block;
+      border-radius: 0.3rem;
+      box-sizing: border-box;
+      background-color: #1f2022;
+      box-shadow: 0rem 0.3rem 0rem 0rem rgba(255, 255, 255, 0.1);
+      border: none;
+      resize: none;
+      font: inherit;
+      font-size: 1rem;
+      font-weight: 400;
+      color: #d1d2d2;
+      width: 25rem;
+      padding: 1.5rem;
+      height: 4rem;
+      margin-bottom: 2rem;
+      margin-left: 1rem; }
+      @media (max-width: 1024px) {
+        .footer .footerRight form .correo {
+          width: 25rem; } }
+      .footer .footerRight form .correo input {
+        background: #1f2022;
+        border: none; }
+    .footer .footerRight button {
+      border-radius: 0.5rem;
+      background-color: #33383b;
+      color: white;
+      border: 0rem;
+      font-size: 1.2rem;
+      padding: 0.5rem 4rem;
+      font-weight: 400;
+      float: right; }
+      @media (max-width: 768px) {
+        .footer .footerRight button {
+          float: none; } }
+      @media (max-width: 1024px) {
+        .footer .footerRight button {
+          padding: 1rem 3.5rem; } }

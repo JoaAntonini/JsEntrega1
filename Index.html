@@ -1,78 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/Style.css">
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/775500208a.js" crossorigin="anonymous"></script>
     <title>TuCasa 365°</title>
 </head>
+
 <body>
     <header>
         <h1 class="textCenter tamañoTitulos margenCards">Nuestras lineas</h1>
-        <p id="catalogo"></p>
-    </header>    
+        <div>
+            <form  id="login"> 
+                <h1>Ingresa con tu usuario</h1> 
+                    <p> 
+                        <label for="nombre"> Ingresa tu nombre</label>
+                        <input type="text" placeholder="Nombre y Apellido" name="nombre" id="nombre"/>
+                    </p>
+                    <p> 
+                        <label for="email">Email</label>
+                        <input type= "email" placeholder="mail@mail.com" name="email" id="email">
+                    </p>
+                    <p> 
+                        <label for="password"> Contraseña</label>
+                        <input ype="password" placeholder="1111ABCD"name="password" required="required" t id="password"  /> 
+                    </p>
+                    <p> 
+                        <button onclick="store()" type="button">Login</button>
+                    </p>
+                    <p >
+                        Aun no tenes usuario
+                        <a href="#toregister" >Registrate</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </header>
     <main>
         <div id="lineas"></div>
         <section>
             <h2 id="tituloCondiciones">Condiciones Lineas</h2>
             <div id='lista'>
                 <!-- inserto tabla con condiciones -->
-            </div>          
+            </div>
         </section>
         <section>
             <h2 class="textCenter tamañoTitulos margenCards">Simula tu cuota</h2>
-                <div>
-                    <form  id="formulario" >
-                        <div>
-                            <fieldset>
-                                <legend>Datos Personales</legend>
-                                    <label for="ingreso">Ingreso Neto Familiar</label>
-                                    <input type="number" placeholder="" name="ingreso" id="ingreso">
-                                    <label for="antiguedad">Antiguedad Laboral</label>
-                                    <input type= "number" placeholder="" name="antiguedad" id="antiguedad">
-                                    <label for="capital">Monto a Pedir</label>
-                                    <input type= "number" placeholder="" name="capital" id="capital">
-                                    <label for="plazo">Plazo Meses</label>
-                                    <input type= "number" placeholder="" name="plazo" id="plazo">
-                                    <input type="submit" placeholder="controlInfo">
-                            </fieldset>
-                        </div>
-                    </form>
-                </div>
-                <div>
-                    <button class="btn btn-dark" id="miBoton">Calcular</button>
-                </div>
-            <h2 class="textCenter tamañoTitulos margenCards">Oferta</h2>
-                <div>
-                    <h4></h4>  
-                    <button class="btn btn-dark" > Me interesa </button>
-                </div>
-        </section> 
-     </main> 
-     <footer class="footer">
-            <div class="footerLeft">
-                <h3 >TuCasa365°</h3>
-                    <p class="footerLinks">
-                        <a href="index.html">Home</a>
-                        <a href="Opiniones.html">Opiniones</a>
-                        <a href="Nosotros.html">Nosotros</a>
-                        <a href="Faq.html">Faq</a>
-                        <a href="Servicios.html">Servicios</a>
-                    </p>
-                    <div class="footerIcons">
-                        <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"aria-hidden="true"></i></a>
-                        <a href="https://twitter.com" target="_blank"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a>
-                        <a href="https://facebook.com" target="_blank"><i class="fa-brands fa-facebook-f"aria-hidden="true"></i></a>
-                        <a href="https://ar.linkedin.com/" target="_blank"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
-                    </div>
+            <div>
+                <form id="formulario">
+                        <legend>Datos Personales</legend>
+                        <label for="ingreso">Ingreso Neto Familiar</label>
+                        <input type="number" placeholder="" name="ingreso" id="ingreso">
+                        <label for="antiguedad">Antiguedad Laboral</label>
+                        <input type="number" placeholder="" name="antiguedad" id="antiguedad">
+                        <label for="capital">Monto a Pedir</label>
+                        <input type="number" placeholder="" name="capital" id="capital">
+                        <label for="plazo">Plazo Meses</label>
+                        <input type="number" placeholder="" name="plazo" id="plazo">
+                        <input type="submit" value="Calcular" class="btn btn-dark" id="miBoton" placeholder="controlInfo">
+                </form>
             </div>
-        </footer>    
-     <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+            <h2 class="textCenter tamañoTitulos margenCards">Oferta</h2>
+            <div id="oferta">
+                <button class="btn btn-dark textCenter"> Me interesa </button>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footerLeft">
+            <h3>TuCasa365°</h3>
+            <p class="footerLinks">
+                <a href="index.html">Home</a>
+                <a href="Opiniones.html">Opiniones</a>
+                <a href="Nosotros.html">Nosotros</a>
+                <a href="Faq.html">Faq</a>
+                <a href="Servicios.html">Servicios</a>
+            </p>
+            <div class="footerIcons">
+                <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"
+                        aria-hidden="true"></i></a>
+                <a href="https://twitter.com" target="_blank"><i class="fa-brands fa-twitter"
+                        aria-hidden="true"></i></a>
+                <a href="https://facebook.com" target="_blank"><i class="fa-brands fa-facebook-f"
+                        aria-hidden="true"></i></a>
+                <a href="https://ar.linkedin.com/" target="_blank"><i class="fa-brands fa-linkedin"
+                        aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </footer>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
     <script src="script1.js"></script>
 </body>
 </html>

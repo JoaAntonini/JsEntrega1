@@ -19,11 +19,9 @@ listaLineas.unshift("Adquisición Vivienda Nueva","Adquisición Vivienda Usada")
 
 console.log(listaLineas);
 
-//tengo que ver como sumar esto en la pagina en la ubicacion que quiero!!
-document.write("<p> Tenemos " + listaLineas.length + " lineas de creditos disponibles para ofrecerte: " + listaLineas.join(", ") +"</p>" );
-
 // Dejo en la consola la lista de lineas y condiciones para luego impactarlas en el HTML y que el cliente pueda saber 
 // y elegir cual le interesa y si califica, para luego ingresar en el calculador y saber cual seria su cuota
+//sumo lista de documentacion requerida 
 
 const listaCondiciones=[
     {
@@ -34,7 +32,11 @@ const listaCondiciones=[
         edadMaxima: 70,
         plazoMinimoMeses: 120,
         plazoMaximoMeses: 240,
-        img:"./img/compraviviendanueva.jpg"
+        img:"./img/compraviviendanueva.jpg",
+        dni:"DNI",
+        comprobanteDomicilio: "comprobanteDomicilio",
+        recibosDeSueldo: "recibosDeSueldo",
+        docTecnica: "Escritura y Boleto Compra-Venta"
     },
     {
         nombre: "Adquisición Vivienda Usada",
@@ -44,7 +46,11 @@ const listaCondiciones=[
         edadMaxima: 70,
         plazoMinimoMeses: 120,
         plazoMaximoMeses: 240,
-        img:"./img/compraviviendausada-min.jpg"
+        img:"./img/compraviviendausada-min.jpg",
+        dni: "DNI",
+        comprobanteDomicilio: "comprobanteDomicilio",
+        recibosDeSueldo: "recibosDeSueldo",
+        docTecnica: "Escritura y Boleto Compra-Venta"
     },
     {
         nombre: "Construcción",
@@ -54,7 +60,11 @@ const listaCondiciones=[
         edadMaxima: 70,
         plazoMinimoMeses: 120,
         plazoMaximoMeses: 240,
-        img: "./img/construccion-min.jpg"
+        img: "./img/construccion-min.jpg",
+        dni: "DNI",
+        comprobanteDomicilio: "comprobanteDomicilio",
+        recibosDeSueldo: "recibosDeSueldo",
+        docTecnica: "Escritura, plano y Proyecto de Obra"
     },
     {
         nombre: "Construcción con Terreno",
@@ -64,7 +74,11 @@ const listaCondiciones=[
         edadMaxima: 70,
         plazoMinimoMeses: 120,
         plazoMaximoMeses: 240,
-        img: "./img/construccionconterreno-min.jpg"
+        img: "./img/construccionconterreno-min.jpg",
+        dni: "DNI",
+        comprobanteDomicilio: "comprobanteDomicilio",
+        recibosDeSueldo: "recibosDeSueldo",
+        docTecnica : "Escritura, plano y Proyecto de Obra"
     },
  ];
 
@@ -74,9 +88,6 @@ const listaCondiciones=[
 //Accedo al DOM a traves del ID
 let lineas = document.createElement("div");
 lineas.className="card textCenter alineaCards";
-
-
-//ver como sumar la imagen y que no se arruine el formato!!!
 
     //Para cada linea del array voy a tener una card
     for (const linea of listaCondiciones){
@@ -101,6 +112,10 @@ lineas.className="card textCenter alineaCards";
 
 
 let insertaLineas=document.getElementById("lineas");
+const p = document.createElement("p");
+p.innerHTML = `Tenemos ${listaLineas.length} lineas de creditos disponibles para ofrecerte`
+p.className= "textCenter tamañoTitulos";
+insertaLineas.appendChild(p);
 insertaLineas.appendChild(lineas);
 
 //le inserto formato al titulo de condiciones y le cambio el texto
@@ -133,7 +148,37 @@ let lista = document.createElement("div");
                         <li class="card-text alineaInfo">Financiación hasta $ ${producto.montoMaximo}</li>
                         <li class="card-text alineaInfo">Ingreso minimo $ ${producto.ingresoMinimo}</li>
                     </ul>
-                    <button>Más info</button>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal1">
+                    Mas info
+                    </button>
+                    <!-- Modal -->
+                        <div class="modal fade" id="Modal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Requisitos y Documentacion ${producto.nombre}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">
+                               <ul>
+                                    <li class="card-text alineaInfo">Edad Minima ${producto.edadMinima}</li>
+                                    <li class="card-text alineaInfo">Edad Maxima ${producto.edadMaxima}</li>
+                                    <li class="card-text alineaInfo">Plazo Minimo ${producto.plazoMinimoMeses}  meses</li>
+                                    <li class="card-text alineaInfo">Plazo Maximo ${producto.plazoMaximoMeses} meses</li>
+                                    <li class="card-text alineaInfo">Financiación hasta $ ${producto.montoMaximo}</li>
+                                    <li class="card-text alineaInfo">Ingreso minimo $ ${producto.ingresoMinimo}</li>
+                                    <li class="card-text alineaInfo"> Documentacion Personal: ${producto.dni}</li>
+                                    <li class="card-text alineaInfo"> Documentacion Personal2: ${producto.comprobanteDomicilio}</li>
+                                    <li class="card-text alineaInfo"> Documentacion Laboral:  ${producto.recibosDeSueldo}</li>        
+                                    <li class="card-text alineaInfo"> Documentacion Tecnica:  ${producto.docTecnica}</li>  
+                                </ul>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                 </div>
             </div>
             </div>
@@ -150,11 +195,10 @@ insertaLista.appendChild(lista);
 lista.className= "alineaCards";
 
 
-
 //pedimos al cliente que ingrese la linea que le interesa y calcule su cuota
 
 let boton = document.getElementById("miBoton");
-boton.addEventListener("click", calcular);
+
 
 boton.onmouseover = () =>{
     boton.className="btn btn-primary";
@@ -164,36 +208,71 @@ boton.onmouseout = () => {
     boton.className="btn btn-dark";
 }
 
-let campoIngreso = document.getElementById("ingreso");
-let campoAntiguedad = document.getElementById("antiguedad");
-let campoCapital = document.getElementById("capital");
-let campoPlazo = document.getElementById("plazo");
-//let Interes = 0.2; ver como definirlo para que lo tome
 
-function calcular (capital, Interes, plazo){ 
-    if (campoIngreso.value < 20000 && campoAntiguedad.value < 3) {
-        document.write("<h4> No califica para esta linea </h4>");
-    }else if (campoIngreso.value >= 20000 && campoIngreso.value < 1000000 && campoAntiguedad.value >= 3){
-        let cuota = ((campoCapital.value / campoPlazo.value / 12) * (1 + 0.2)).toFixed(2);
-        document.write("<h4> La cuota Mensual sera de " + cuota + "</h4>");
+function calcular (e){
+    e.preventDefault();
+    let done=0;
+    let ingreso = document.getElementById("ingreso").value;
+    let antiguedad = document.getElementById("antiguedad").value;
+    let capital = document.getElementById("capital").value;
+    let plazo = document.getElementById("plazo").value;
+    formulario.reset();
+    if (!ingreso || !antiguedad || !capital || !plazo) {
+        alert("Por favor, complete los campos");
+        return;
+    }
+
+    let msj = "";
+
+    if (ingreso < 20000 && antiguedad < 3) {
+        msj ="No califica para esta linea";
+    }else if (ingreso < 1000000 && antiguedad >= 3){
+        let cuota = ((capital / plazo / 12) * (1.2)).toFixed(2);
+        msj= "La cuota mensual sera de " + cuota;
     }
     else {
-        document.write("Comunicate con un representate para revisar tu caso");
+        msj = "Comunicate con un representate para revisar tu caso";
     }
+    let h4 = document.createElement("h4");
+    h4.innerHTML = msj;
+    document.getElementById("oferta").prepend(h4);
+    localStorage.setItem("cuota", cuota.value);
 };
-
 
 //Controla que haya completado datos del formulario (sean numero y no esten vacios)
 
-let formulario      = document.getElementById("formulario");
-formulario.addEventListener("submit", validarFormulario);
+let formulario = document.getElementById("formulario");
+formulario.addEventListener("submit", calcular);
 
-function validarFormulario(e){
-    if(isNaN(campoIngreso.value)||(campoIngreso.value=="")||isNaN(campoAntiguedad.value)||(campoAntiguedad.value=="")||isNaN(campoCapital.value)||(campoCapital.value=="")||isNaN(campoPlazo.value)||(campoPlazo.value=="")){
-        e.preventDefault();//Cancelamos el comportamiento del evento y evita que se borren los campos
-        alert("Los datos ingresados son incorrectos");
+
+//Login para que le quede registrada la cuota que calculo (me sale como undefined, porque?)
+//guarda los datos pero los pierdo cuando refresco la sesion (porque?)
+//no me deja guardar mas de un usuario  (como sumo mas usuarios?)
+
+
+ function store(){
+    let usuario=document.getElementById("nombre").value;
+    let email=  document.getElementById("email").value;
+    let password=  document.getElementById("password").value;
+     let inputUsuario= document.getElementById("nombre");
+     localStorage.setItem("nombre", inputUsuario.value);
+     let inputPassword= document.getElementById("password");
+     localStorage.setItem("password", inputPassword.value);
+     let inputEmail= document.getElementById("email");
+     localStorage.setItem("email", inputEmail.value);     
+     if (usuario=="" || email=="" || password=="") {
+        alert("Por favor ingrese, nombre, email y contraseña");
+        return;
+    }else{ 
+        document.getElementById("login").submit();
     }
 }
 
 
-//A sumar boton me interesa derive en un formulario de carga de datos para contacto
+
+//Pendientes
+
+//modal BS para las condiciones de cada producto ok, pero me vincula a todos las mismas condiciones.
+//"me interesa" disparar correo para contactar al cliente
+//le da calcular y acumula los resultados en el mensaje del html (reset no sirve)
+//calcular intereses del array

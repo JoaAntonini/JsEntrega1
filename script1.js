@@ -110,12 +110,26 @@ lineas.className="card textCenter alineaCards";
         lineas.appendChild(card);
     }
 
+//desestructuro el array de lineas para quedarme con las 2 recomendadas del momento
 
 let insertaLineas=document.getElementById("lineas");
 const p = document.createElement("p");
+const p2 = document.createElement("p");
+const p3 = document.createElement("p");
+const h3 = document.createElement("h3");
+const [a,,b] = listaLineas;
+h3.innerText = `Lineas recomendadas del mes`
+p2.innerText = a
+p3.innerText = b
 p.innerHTML = `Tenemos ${listaLineas.length} lineas de creditos disponibles para ofrecerte`
 p.className= "textCenter tamañoTitulos";
+h3.className= "textCenter tamañoTitulos2";
+p2.className= "textCenter";
+p3.className= "textCenter";
 insertaLineas.appendChild(p);
+insertaLineas.appendChild(h3);
+insertaLineas.appendChild(p2);
+insertaLineas.appendChild(p3);
 insertaLineas.appendChild(lineas);
 
 //le inserto formato al titulo de condiciones y le cambio el texto
@@ -217,11 +231,12 @@ function calcular (e){
     let capital = document.getElementById("capital").value;
     let plazo = document.getElementById("plazo").value;
     formulario.reset();
-    if (!ingreso || !antiguedad || !capital || !plazo) {
-        alert("Por favor, complete los campos");
-        return;
-    }
-
+    //incorporo operador AND
+    (!ingreso || !antiguedad || !capital || !plazo) && Swal.fire({
+  icon: 'error',
+  text: 'Por favor, complete los campos',
+});
+    
     let msj = "";
 
     if (ingreso < 20000 && antiguedad < 3) {
@@ -242,7 +257,44 @@ function calcular (e){
 //Controla que haya completado datos del formulario (sean numero y no esten vacios)
 
 let formulario = document.getElementById("formulario");
-formulario.addEventListener("submit", calcular);
+formulario.addEventListener("submit", calcular );
+
+
+//genero con un spread de objetos la informacion financiera de las lineas
+//guardo objeto con JSON para mostrar
+const linea1 = {nombre:"Adquisición Vivienda Nueva", tasa: 15, CFT: 60 };
+const linea1Json = JSON.stringify(linea1);
+
+console.log(linea1Json);
+const linea2 = {...linea1, nombre:"Adquisición Vivienda Usada"};
+const linea2Json = JSON.stringify(linea2);
+const linea3 = {...linea1,nombre:"Construcción", tasa: 10};
+const linea3Json = JSON.stringify(linea3);
+const linea4 = {...linea3,nombre:"Construcción con Terreno", CFT: 55};
+const linea4Json = JSON.stringify(linea4);
+
+let condicionesFinancieras=document.getElementById("financiacion");
+
+const fp1 = document.createElement("p");
+const fp2 = document.createElement("p");
+const fp3 = document.createElement("p");
+const fp4 = document.createElement("p");
+const fh3 = document.createElement("h3");
+
+fh3.innerText = `Condiciones Financieras`
+fp1.innerText = linea2Json
+fp2.innerText = linea2Json
+fp3.innerText = linea3Json
+fp4.innerText = linea4Json
+
+fh3.className= "textCenter tamañoTitulos2";
+
+condicionesFinancieras.appendChild(fh3);
+condicionesFinancieras.appendChild(fp1);
+condicionesFinancieras.appendChild(fp2);
+condicionesFinancieras.appendChild(fp3);
+condicionesFinancieras.appendChild(fp4);
+//condicionesFinancieras.appendChild(financiacion);
 
 
 //Login para que le quede registrada la cuota que calculo (me sale como undefined, porque?)
@@ -254,21 +306,103 @@ formulario.addEventListener("submit", calcular);
     let usuario=document.getElementById("nombre").value;
     let email=  document.getElementById("email").value;
     let password=  document.getElementById("password").value;
-     let inputUsuario= document.getElementById("nombre");
-     localStorage.setItem("nombre", inputUsuario.value);
-     let inputPassword= document.getElementById("password");
-     localStorage.setItem("password", inputPassword.value);
-     let inputEmail= document.getElementById("email");
-     localStorage.setItem("email", inputEmail.value);     
-     if (usuario=="" || email=="" || password=="") {
-        alert("Por favor ingrese, nombre, email y contraseña");
-        return;
-    }else{ 
-        document.getElementById("login").submit();
-    }
+    let inputUsuario= document.getElementById("nombre");
+    localStorage.setItem("nombre", inputUsuario.value);
+    let inputPassword= document.getElementById("password");
+    localStorage.setItem("password", inputPassword.value);
+    let inputEmail= document.getElementById("email");
+    localStorage.setItem("email", inputEmail.value);     
+    (usuario=="" || email=="" || password=="")? Swal.fire({ icon: 'error', title: 'Oops...', text: 'Por favor ingrese, nombre, email y contraseña',
+    footer: '<a href="">Why do I have this issue?</a>'}) : document.getElementById("login").submit();
 }
 
+const btn = document.querySelector('#myBtn')
+btn.addEventListener('click', () => {
+    Swal.fire({
+      title: 'Iniciar Sesión',
+      html: `<input type="text" id="login" class="swal2-input" placeholder="Username">
+      <input type="password" id="password" class="swal2-input" placeholder="Password">`,
+      confirmButtonText: 'Sign in',
+      focusConfirm: false,
+      preConfirm: () => {
+        const login = Swal.getPopup().querySelector('#login').value
+        const password = Swal.getPopup().querySelector('#password').value
+        if (!login || !password) {
+          Swal.showValidationMessage(`Ingrese usuario y contraseña`)
+        }
+        return { login: login, password: password }
+      }
+    }).then((result) => {
+      Swal.fire(`
+        Login: ${result.value.login}
+        Password: ${result.value.password}
+      `.trim())
+    })
+})
 
+const btn2 = document.querySelector('#myBtn2')
+btn2.addEventListener('click', () => {
+ Swal.fire({
+      title: 'Genera tu usuario en Compra Tu hogar',
+      html:` <div>
+            <form  id="login"> 
+                     <p> 
+                        <input type="text" placeholder="Nombre y Apellido" name="nombre" id="nombre"/>
+                    </p>
+                      <p> 
+                        <input type="text" placeholder="AAAA555" name="usuario1" id="usuario1"/>
+                    </p>
+                    <p> 
+                        <input type="phone" placeholder="1511111111" name="phone" id="phone"/>
+                    </p>
+                    <p> 
+                        <input type= "email" placeholder="mail@mail.com" name="email" id="email">
+                    </p>
+                    <p> 
+                        <input ype="password" placeholder="1111ABCD"name="password" required="required" t id="password"  /> 
+                    </p>
+                    <p> 
+                        <button onclick="store()" class="btn btn-outline-secondary" type="button">Genera tu usuario</button>
+                    </p>
+                  </form>
+            </div>`,
+      position: 'top-end',
+      showClass: {
+        popup: `
+          animate__animated
+          animate__fadeInRight
+          animate__faster
+        `
+      },
+      hideClass: {
+        popup: `
+          animate__animated
+          animate__fadeOutRight
+          animate__faster
+        `
+      },
+      grow: 'column',
+      width: 300,
+      showConfirmButton: false,
+      showCloseButton: true
+    })
+})
+
+
+//interesa oferta
+
+
+const interesaOferta = document.getElementById('interes')
+interesaOferta.addEventListener('click', () => {
+    Swal.fire({
+      title: 'Bienvenido!!!',
+      text: 'Estas un paso mas cerca de tu casa, te vamos a contactar dentro de las 48 hs',
+      imageUrl:"./img/oferta.jpg",
+      imageWidth: 200,
+      imageHeight: 198,
+      imageAlt: 'Custom image',
+    })
+})
 
 //Pendientes
 

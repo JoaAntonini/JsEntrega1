@@ -12,35 +12,23 @@
     <script src="https://kit.fontawesome.com/775500208a.js" crossorigin="anonymous"></script>
     <title>TuCasa 365°</title>
 </head>
-
 <body>
+    <body class="w-100" id="navHeader">
+        <nav class="navbar navbar-expand-md navbar-light fondoIndex sticky-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">
+                    <img src="img/logo-min.jpg" class="logoMargin" alt="logo de Tucasa" >
+                </a>
+                <div id="sesion">
+                    <button id="myBtn" class="btn btn-dark btn-lg active botonSesion" role="button" aria-pressed="true">Iniciar Sesión</button>
+                </div>
+                 <div>
+                    <button id="myBtn2" class="btn btn-primary btn-lg active botonSesion" role="button" aria-pressed="true">Loguearse</button>
+                </div>
+            </div>
+        </nav>
     <header>
         <h1 class="textCenter tamañoTitulos margenCards">Nuestras lineas</h1>
-        <div>
-            <form  id="login"> 
-                <h1>Ingresa con tu usuario</h1> 
-                    <p> 
-                        <label for="nombre"> Ingresa tu nombre</label>
-                        <input type="text" placeholder="Nombre y Apellido" name="nombre" id="nombre"/>
-                    </p>
-                    <p> 
-                        <label for="email">Email</label>
-                        <input type= "email" placeholder="mail@mail.com" name="email" id="email">
-                    </p>
-                    <p> 
-                        <label for="password"> Contraseña</label>
-                        <input ype="password" placeholder="1111ABCD"name="password" required="required" t id="password"  /> 
-                    </p>
-                    <p> 
-                        <button onclick="store()" type="button">Login</button>
-                    </p>
-                    <p >
-                        Aun no tenes usuario
-                        <a href="#toregister" >Registrate</a>
-                    </p>
-                </form>
-            </div>
-        </div>
     </header>
     <main>
         <div id="lineas"></div>
@@ -49,7 +37,11 @@
             <div id='lista'>
                 <!-- inserto tabla con condiciones -->
             </div>
+            <a href="#toregister"></a>
         </section>
+         <section>
+            <div id="financiacion"></div>
+         </section>
         <section>
             <h2 class="textCenter tamañoTitulos margenCards">Simula tu cuota</h2>
             <div>
@@ -68,7 +60,7 @@
             </div>
             <h2 class="textCenter tamañoTitulos margenCards">Oferta</h2>
             <div id="oferta">
-                <button class="btn btn-dark textCenter"> Me interesa </button>
+                <button class="btn btn-dark textCenter" id="interes"> Me interesa </button>
             </div>
         </section>
     </main>
@@ -95,6 +87,7 @@
         </div>
     </footer>
     <!-- JavaScript Bundle with Popper -->
+    <script src="node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>

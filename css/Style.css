@@ -31,6 +31,11 @@ body {
   text-align: center;
 }
 
+.registro{
+  color: black;
+  font-style: bold;
+  font-size: 3rem;
+}
 
 #lineas .alineaCards{
   position: relative;
@@ -55,11 +60,24 @@ body {
   margin-bottom: 2rem;
 }
 
+.colored-toast.swal2-icon-success {
+  background-color: #a5dc86 !important;
+}
+
 .tamañoTitulos{
   font-size: 3rem;
   text-decoration: underline;
 }
+#sesion {
+  margin-left: 58rem;
+}
+.botonSesion{
+  font-size: 3rem;
+}
 
+.colorRegistro{
+  color: black;
+}
 
 .tamañoTitulos2{
   font-size: 2rem;
@@ -136,6 +154,39 @@ body {
 
 }
 
+#navHeader a {
+  color: white; }
+
+
+
+.logoMargin {
+  display: flex;
+  box-sizing: border-box;
+  text-decoration: none;
+  width: 80%;
+  align-content: center;
+  align-items: center;
+  margin-left: 3rem;
+  height: 60%;
+  margin-top: 1rem; }
+  @media (min-width: 280px) {
+    .logoMargin {
+      width: 80%; } }
+  @media (min-width: 768px) {
+    .logoMargin {
+      width: 45%;
+      display: flex;
+      align-items: flex-start;
+      margin-left: 2rem;
+      box-sizing: border-box;
+      margin-top: 0rem; } }
+
+.fondoIndex {
+  background: #344a4d;
+  background: linear-gradient(90deg, #344a4d 0%, #0b0733 15%, #2c3658 66%, #618496 89%); }
+  @media (min-width: 280px) {
+    .fondoIndex {
+      width: 100%; } }
 
 .footer {
   background: #06395e;

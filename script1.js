@@ -262,15 +262,15 @@ formulario.addEventListener("submit", calcular );
 
 //genero con un spread de objetos la informacion financiera de las lineas
 //guardo objeto con JSON para mostrar
-const linea1 = {nombre:"Adquisición Vivienda Nueva", tasa: 15, CFT: 60 };
+const linea1 = {nombre:"Adquisición Vivienda Nueva", tasa: 25, CFT: 90 };
 const linea1Json = JSON.stringify(linea1);
 
 console.log(linea1Json);
 const linea2 = {...linea1, nombre:"Adquisición Vivienda Usada"};
 const linea2Json = JSON.stringify(linea2);
-const linea3 = {...linea1,nombre:"Construcción", tasa: 10};
+const linea3 = {...linea1,nombre:"Construcción", tasa: 20};
 const linea3Json = JSON.stringify(linea3);
-const linea4 = {...linea3,nombre:"Construcción con Terreno", CFT: 55};
+const linea4 = {...linea3,nombre:"Construcción con Terreno", CFT: 75};
 const linea4Json = JSON.stringify(linea4);
 
 let condicionesFinancieras=document.getElementById("financiacion");
@@ -281,7 +281,7 @@ const fp3 = document.createElement("p");
 const fp4 = document.createElement("p");
 const fh3 = document.createElement("h3");
 
-fh3.innerText = `Condiciones Financieras`
+fh3.innerText = `Condiciones Financieras clientela general`
 fp1.innerText = linea2Json
 fp2.innerText = linea2Json
 fp3.innerText = linea3Json
@@ -403,6 +403,53 @@ interesaOferta.addEventListener('click', () => {
       imageAlt: 'Custom image',
     })
 })
+
+//sumo un pop up con obras terminadas
+
+const testimonios= document.getElementById("testimonios");
+testimonios.innerHTML="<h1>Obras Terminadas</h1>";
+
+testimonios.onclick=()=>{
+    let imagenes = document.createElement("img");
+    imagenes.setAttribute("src","./img/Testimonios.png");
+    testimonios.appendChild(imagenes);
+    setTimeout(()=> {
+        testimonios.removeChild(imagenes);
+    },2000);}
+
+
+
+//fetch GET y ruta local
+
+
+function obtenerTasas(){
+    const URLJSON="/tasas.json";
+    fetch(URLJSON)
+        .then((resultado) => resultado.json())//primera promesa
+        .then( (data) =>{
+            let tasas = data.listaTasas;
+            for (const tasaLinea of tasas){
+                let financiero = document.getElementById("tasas");
+                financiero.innerHTML =`
+                <h3 class="textCenter tamañoTitulos margenCards" >Condiciones Financieras para clientes Plan Sueldo</h3>
+                 <ul>
+                    <li class="card-text alineaInfo botonSesion">${tasaLinea.nombre}</li>
+                    <li class="card-text alineaInfo botonSesion">Tasa Nominal Anual: ${tasaLinea.tna} %</li>
+                    <li class="card-text alineaInfo botonSesion">Tasa Efectiva Mensual: ${tasaLinea.tem} %</li>
+                    <li class="card-text alineaInfo botonSesion">Costo Financiero Total:  ${tasaLinea.cft} %</li>
+                </ul>
+
+                 `
+            };
+            lista.appendChild(financiero);
+        })
+        .catch((error) =>{
+            console.log("Error")
+        })
+}
+obtenerTasas();
+
+
 
 //Pendientes
 

@@ -34,7 +34,9 @@
         <h1 class="textCenter tamañoTitulos margenCards">Nuestras lineas</h1>
     </header>
     <main>
-        <div id="lineas"></div>
+        <section>
+            <div id="lineas"></div>
+        </section>
         <section>
             <h2 id="tituloCondiciones">Condiciones Lineas</h2>
             <div id='lista'>
@@ -43,29 +45,37 @@
             <a href="#toregister"></a>
         </section>
          <section>
-            <div id="financiacion"></div>
-         </section>
-         <section>
-            <div id="tasas"></div>
+                <h3 class="textCenter tamañoTitulos margenCards">Condiciones Financieras para clientes Plan Sueldo</h3>
+                    <div id="tasaClientes"></div>
+                <h3 class="textCenter tamañoTitulos margenCards">Condiciones Financieras para clientela General</h3>
+                    <div id="tasaGenerales"></div>
          </section>
         <section>
             <h2 class="textCenter tamañoTitulos margenCards">Simula tu cuota</h2>
             <div>
                 <form id="formulario">
-                        <legend>Datos Personales</legend>
+                        <h3 class="tamañoTitulos3">Selecciona una linea</h3>
+                        <select id="selectNumber">
+                            <button id="btnMostrar">Mostrar seleccionado</button>
+                         </select>                        
+                         <label for="tasaInteres">Tasa Interes Anual</label>
+                        <input type="number" placeholder="" name="tasaInteres" id="tasaInteres">
+                        </div>
                         <label for="ingreso">Ingreso Neto Familiar</label>
                         <input type="number" placeholder="" name="ingreso" id="ingreso">
                         <label for="antiguedad">Antiguedad Laboral</label>
                         <input type="number" placeholder="" name="antiguedad" id="antiguedad">
                         <label for="capital">Monto a Pedir</label>
                         <input type="number" placeholder="" name="capital" id="capital">
+                        
                         <label for="plazo">Plazo Meses</label>
                         <input type="number" placeholder="" name="plazo" id="plazo">
                         <input type="submit" value="Calcular" class="btn btn-dark" id="miBoton" placeholder="controlInfo">
                 </form>
             </div>
             <h2 class="textCenter tamañoTitulos margenCards">Oferta</h2>
-            <div id="oferta">
+            <div id="oferta"> </div>
+            <div class="textCenter tamañoTitulos margenCards">
                 <button class="btn btn-dark textCenter" id="interes"> Me interesa </button>
             </div>
         </section>

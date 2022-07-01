@@ -1,32 +1,11 @@
 
+[
+        { "nombre": "Adquisición Vivienda Nueva", "tna": 15, "tem": 2, "cft": 60 },
 
-{
-	"listaTasas" :[
-	    {
-	        "nombre": "Adquisición Vivienda Nueva",
-	        "tna": 15,
-	        "tem":2,
-	        "cft": 60        
-	    },
-	    {
-	       "nombre": "Adquisición Vivienda Usada",
-	        "tna": 15,
-	        "tem":2,
-	        "cft": 60 
-	    },
-	    {
-	       "nombre": "Construcción",
-	       "tna": 10,
-	       	"tem":1.2,
-	        "cft": 55
-	      
-	    },
-	    {
-	       "nombre": "Construcción con Terreno",
-	       "tna": 10,
-	       	"tem":1.2,
-	        "cft": 55
+        { "nombre": "Adquisición Vivienda Usada", "tna": 15, "tem": 2, "cft": 60 },
 
-	    }
-    ]
-}
+        { "nombre": "Construcción", "tna": 10, "tem": 1.2, "cft": 55 },
+
+        { "nombre": "Construcción con Terreno", "tna": 10, "tem": 1.2, "cft": 55}
+
+]

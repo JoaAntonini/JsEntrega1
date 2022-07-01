@@ -1,0 +1,10 @@
+[
+    { "nombre": "Adquisición Vivienda Nueva", "tna": 20, "tem": 4, "cft": 90 },
+
+    { "nombre": "Adquisición Vivienda Usada","tna": 20, "tem": 4, "cft": 90},
+
+    { "nombre": "Construcción", "tna": 15, "tem": 2.2, "cft": 70 },
+
+    { "nombre": "Construcción con Terreno", "tna": 14, "tem": 2, "cft": 68}
+
+]
